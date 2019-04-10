@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.NonNull;
 import java.util.List;
+import javax.validation.constraints.*;
 import no.fint.model.FintMainObject;
 import no.fint.model.felles.kompleksedatatyper.Identifikator;
 
@@ -22,8 +22,8 @@ public class Oppdragsgiver implements FintMainObject {
             VARELINJE
     }
 
-    @NonNull
+    @NotBlank
     private String navn;
-    @NonNull
+    @NotNull
     private Identifikator systemId;
 }

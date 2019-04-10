@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.NonNull;
 import java.util.List;
+import javax.validation.constraints.*;
 import no.fint.model.FintComplexDatatypeObject;
 
 @Data
@@ -19,10 +19,9 @@ public class Fakturalinje implements FintComplexDatatypeObject {
             VARELINJE
     }
 
-    @NonNull
+    @NotNull
     private Float antall;
-    @NonNull
     private List<String> fritekst;
-    @NonNull
+    @NotNull
     private Long pris;
 }

@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.NonNull;
 import java.util.List;
+import javax.validation.constraints.*;
 import no.fint.model.FintMainObject;
 import no.fint.model.administrasjon.kompleksedatatyper.Kontostreng;
 import no.fint.model.felles.basisklasser.Begrep;
@@ -22,9 +22,9 @@ public class Varelinje extends Begrep implements FintMainObject {
             OPPDRAGSGIVER
     }
 
-    @NonNull
+    @NotBlank
     private String enhet;
     private Kontostreng kontering;
-    @NonNull
+    @NotNull
     private Long pris;
 }
