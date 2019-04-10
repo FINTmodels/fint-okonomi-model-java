@@ -13,6 +13,7 @@ import lombok.ToString;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 import no.fint.model.FintMainObject;
@@ -40,13 +41,13 @@ public class FakturagrunnlagResource implements FintMainObject, FintLinks {
     private Long avgifter;
     private Date fakturadato;
     @NotEmpty
-    private List<FakturalinjeResource> fakturalinjer;
-    private Identifikator fakturanummer;
+    private List<@Valid FakturalinjeResource> fakturalinjer;
+    private @Valid Identifikator fakturanummer;
     private Date forfallsdato;
     private Date leveringsdato;
     private Long netto;
     @NotNull
-    private Identifikator ordrenummer;
+    private @Valid Identifikator ordrenummer;
     private Long total;
 
     // Relations

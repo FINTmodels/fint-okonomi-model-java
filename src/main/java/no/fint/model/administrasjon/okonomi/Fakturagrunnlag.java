@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import java.util.List;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import no.fint.model.FintMainObject;
 import java.util.Date;
@@ -26,12 +27,12 @@ public class Fakturagrunnlag implements FintMainObject {
     private Long avgifter;
     private Date fakturadato;
     @NotEmpty
-    private List<Fakturalinje> fakturalinjer;
-    private Identifikator fakturanummer;
+    private List<@Valid Fakturalinje> fakturalinjer;
+    private @Valid Identifikator fakturanummer;
     private Date forfallsdato;
     private Date leveringsdato;
     private Long netto;
     @NotNull
-    private Identifikator ordrenummer;
+    private @Valid Identifikator ordrenummer;
     private Long total;
 }

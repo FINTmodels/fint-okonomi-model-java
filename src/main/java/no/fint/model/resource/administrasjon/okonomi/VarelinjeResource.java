@@ -13,6 +13,7 @@ import lombok.ToString;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 import no.fint.model.FintMainObject;
@@ -38,7 +39,7 @@ public class VarelinjeResource extends Begrep implements FintMainObject, FintLin
     }
     @NotBlank
     private String enhet;
-    private KontostrengResource kontering;
+    private @Valid KontostrengResource kontering;
     @NotNull
     private Long pris;
 
