@@ -10,7 +10,6 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import no.fint.model.FintMainObject;
-import no.fint.model.administrasjon.okonomi.Fakturalinje;
 import java.util.Date;
 import no.fint.model.felles.kompleksedatatyper.Identifikator;
 
@@ -18,19 +17,17 @@ import no.fint.model.felles.kompleksedatatyper.Identifikator;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class Fakturagrunnlag implements FintMainObject {
+public class Faktura implements FintMainObject {
     public enum Relasjonsnavn {
-            MOTTAKER,
-            FAKTURA,
-            OPPDRAGSGIVER
+            FAKTURAGRUNNLAG
     }
 
-    private Long avgifter;
-    @NotEmpty
-    private List<@Valid Fakturalinje> fakturalinjer;
-    private Date leveringsdato;
-    private Long netto;
     @NotNull
-    private @Valid Identifikator ordrenummer;
-    private Long total;
+    private Long belop;
+    @NotNull
+    private Date fakturadato;
+    @NotNull
+    private @Valid Identifikator fakturanummer;
+    @NotNull
+    private Date forfallsdato;
 }

@@ -19,8 +19,8 @@ import javax.validation.constraints.*;
 import no.fint.model.FintMainObject;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.Link;
-import java.util.Date;
 import no.fint.model.resource.administrasjon.okonomi.FakturalinjeResource;
+import java.util.Date;
 import no.fint.model.felles.kompleksedatatyper.Identifikator;
 
 @Data
@@ -39,11 +39,8 @@ public class FakturagrunnlagResource implements FintMainObject, FintLinks {
         return result;
     }
     private Long avgifter;
-    private Date fakturadato;
     @NotEmpty
     private List<@Valid FakturalinjeResource> fakturalinjer;
-    private @Valid Identifikator fakturanummer;
-    private Date forfallsdato;
     private Date leveringsdato;
     private Long netto;
     @NotNull
@@ -60,6 +57,13 @@ public class FakturagrunnlagResource implements FintMainObject, FintLinks {
     }
     public void addMottaker(Link link) {
         addLink("mottaker", link);
+    }
+    @JsonIgnore
+    public List<Link> getFaktura() {
+        return getLinks().getOrDefault("faktura", Collections.emptyList()); 
+    }
+    public void addFaktura(Link link) {
+        addLink("faktura", link);
     }
     @JsonIgnore
     public List<Link> getOppdragsgiver() {
