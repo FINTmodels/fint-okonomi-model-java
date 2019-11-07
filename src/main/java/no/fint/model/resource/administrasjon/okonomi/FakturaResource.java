@@ -19,6 +19,7 @@ import javax.validation.constraints.*;
 import no.fint.model.FintMainObject;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.Link;
+import no.fint.model.resource.felles.kompleksedatatyper.AdresseResource;
 import java.util.Date;
 import no.fint.model.felles.kompleksedatatyper.Identifikator;
 
@@ -28,14 +29,30 @@ import no.fint.model.felles.kompleksedatatyper.Identifikator;
 @ToString
 public class FakturaResource implements FintMainObject, FintLinks {
     // Attributes
+    @JsonIgnore
+    @Override
+    public List<FintLinks> getNestedResources() {
+        List<FintLinks> result = FintLinks.super.getNestedResources();
+        if (fakturaadresse != null) {
+            result.add(fakturaadresse);
+        }
+        return result;
+    }
+    private Boolean betalt;
+    private @Valid AdresseResource fakturaadresse;
     @NotNull
-    private Long belop;
+    private Long fakturabelop;
     @NotNull
     private Date fakturadato;
+    @NotBlank
+    private String fakturamottaker;
     @NotNull
     private @Valid Identifikator fakturanummer;
+    private Boolean fakturert;
     @NotNull
     private Date forfallsdato;
+    private Boolean kreditert;
+    private Long restbelop;
 
     // Relations
     @Getter
