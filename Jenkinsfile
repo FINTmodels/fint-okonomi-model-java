@@ -14,14 +14,14 @@ pipeline {
         }
         stage('Deploy') {
             environment {
-                BINTRAY = credentials('fint-bintray')
+                REPOSILITE = credentials('reposilite')
             }
             when {
                 branch 'master'
             }
             steps {
                 unstash 'libs'
-                sh 'gradle --no-daemon -PbintrayUser=${BINTRAY_USR} -PbintrayKey=${BINTRAY_PSW} bintrayUpload'
+                sh "gradle --no-daemon -Pversion=${VERSION} -PreposiliteUsername=${REPOSILITE_USR} -PreposiliteToken=${REPOSILITE_PSW} publish"
             }
         }
     }
