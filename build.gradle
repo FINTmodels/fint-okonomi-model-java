@@ -11,16 +11,16 @@ sourceCompatibility = 1.8
 group = 'no.fint'
 
 repositories {
+    mavenCentral()
     maven {
-        url "http://dl.bintray.com/fint/maven"
+        url "https://repo.fintlabs.no/releases"
     }
     mavenLocal()
-    jcenter()
 }
 
 apply from: 'https://raw.githubusercontent.com/FINTlibs/fint-buildscripts/v1.6.0/dependencies.gradle'
 dependencies {
-    compile("no.fint:fint-administrasjon-resource-model-java:3.2.0-rc-1")
+    compile("no.fint:fint-administrasjon-resource-model-java:3.8.11")
 
     compile 'javax.validation:validation-api:2.0.1.Final'
     compileOnly("org.projectlombok:lombok:${lombokVersion}")
@@ -44,6 +44,4 @@ test {
     }
 }
 
-if (project.hasProperty('bintrayUser') && project.hasProperty('bintrayKey')) {
-    apply from: 'https://raw.githubusercontent.com/FINTlibs/fint-buildscripts/v1.6.0/bintray.gradle'
-}
+apply from: 'https://raw.githubusercontent.com/FINTLabs/fint-buildscripts/master/reposilite.gradle'
