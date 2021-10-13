@@ -21,7 +21,7 @@ pipeline {
             }
             steps {
                 unstash 'libs'
-                sh "gradle --no-daemon -Pversion=${VERSION} -PreposiliteUsername=${REPOSILITE_USR} -PreposiliteToken=${REPOSILITE_PSW} publish"
+                sh "gradle --no-daemon -PreposiliteUsername=${REPOSILITE_USR} -PreposiliteToken=${REPOSILITE_PSW} publish"
             }
         }
     }
